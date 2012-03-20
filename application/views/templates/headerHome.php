@@ -11,14 +11,15 @@
 	<title><?php echo $title ?></title>
 </head>
 <body>
-<div id=container data-role="page" data-theme="a">
+<div id=container data-role="page" data-theme="b">
   <div id=header data-role="header">
     <div id=title>
       <?php echo $title; ?>
     </div>
   </div>
   <div data-role="content">
+    <!--
     <a href="../../pages">
     <img id="headerImage" src="/test.jpg" border="0">
-    </a>
+    </a>-->
     

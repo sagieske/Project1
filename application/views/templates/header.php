@@ -11,13 +11,14 @@
 	<title><?php echo $title ?></title>
 </head>
 <body>
-<div id=container data-role="page" data-theme="a">
+<div id=container data-role="page" data-theme="b">
   <div id=header data-role="header">
     <div id=title>
       <?php echo $title; ?>
     </div>
   </div>
   <div data-role="content">
+    <!--
     <a href="../../pages">
     <img id="headerImage" src="/test.jpg" border="0">
     </a>
@@ -27,7 +28,7 @@
       <li><a data-transition="slide" href="search_programs">Search programs</a> </li>
       <li><a data-transition="slide" href="favorite_programs">Browse favorite programs</a> </li>
       <li><a data-transition="slide" href="browse_recently">Browse recently viewed</a> </li>
-    </ul>
+    </ul>-->
     <!--
     <div id="nav_menu"> 
       <ul id="nav_menu_list" data-role="listview" data-inset="true">
