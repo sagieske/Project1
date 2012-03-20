@@ -1,3 +1,7 @@
+<!--
+TODO: sort parties on date or time, using jQuery mobile list dividers
+-->
+
 <div id=body>
 <ul data-role="listview" data-filter="true">
 <?php foreach ($allPrograms as $programItem): ?>

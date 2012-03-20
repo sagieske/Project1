@@ -18,17 +18,13 @@
     </div>
   </div>
   <div data-role="content">
-    <!--
-    <a href="../../pages">
-    <img id="headerImage" src="/test.jpg" border="0">
-    </a>
     <ul data-role="listview" data-inset="true">
       <li><a data-transition="slide" href="index">Home</a> </li>
-      <li><a data-transition="slide" href="show_all_programs">Browse all programs</a> </li>
-      <li><a data-transition="slide" href="search_programs">Search programs</a> </li>
-      <li><a data-transition="slide" href="favorite_programs">Browse favorite programs</a> </li>
+      <li><a data-transition="slide" href="show_all_parties">Browse all parties in Amsterdam</a> </li>
+      <li><a data-transition="slide" href="search_parties">Search parties in Amsterdam</a> </li>
+      <li><a data-transition="slide" href="favorite_parties">Browse favorite parties</a> </li>
       <li><a data-transition="slide" href="browse_recently">Browse recently viewed</a> </li>
-    </ul>-->
+    </ul>
     <!--
     <div id="nav_menu"> 
       <ul id="nav_menu_list" data-role="listview" data-inset="true">

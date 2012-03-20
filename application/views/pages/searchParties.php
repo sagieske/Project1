@@ -1,3 +1,12 @@
+<!-- 
+TODO Make the search page a little more dynamic. 
+For example. 
+- If clicks radio button genre, show a new radiobutton list with genres to choose from.
+- Date: options 'today', 'tomorrow' or 'enter own date'
+- Location: popular options like 'Melkweg', 'Paradiso', or 'enter own location'
+
+Cannot search for 'partyInformation'.
+-->
 <div id=body>
 Search for specific programs here </br></br>
 <form action="show_searched_programs" method="get">
