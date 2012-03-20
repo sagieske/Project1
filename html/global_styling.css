@@ -1,0 +1,111 @@
+html,
+body {
+   margin:0;
+   padding:0;
+   height:100%;
+}
+#headerImage {
+   width: 50%;
+   position: relative;
+   left: 25%;
+}
+#container {
+   min-height:100%;
+   position:relative;
+}
+#headerhome {
+   padding:4px;
+   border-bottom: 1px solid;
+   border-color: black;
+}
+
+#header {
+   padding:4px;
+   border-bottom: 1px solid;
+   border-color: black;
+   font-size: 20px;
+   color: gray;
+   font-style: bold;
+   text-align: center;
+}
+#body {
+   padding:10px;
+   padding-bottom:60px;   /* Height of the footer */
+}
+#footer {
+   border-top: 1px solid;
+   border-color: black;
+   position:absolute;
+   bottom:0;
+   width:100%;
+   height:40px;   /* Height of the footer */
+   color:gray;
+}
+
+body {
+  color: #8B0000; *
+  background-color: #CDC0B0; 
+  font-family: Arial;
+}
+
+#studyName {
+    font-size: 12px;
+    margin-top: 0px;
+    margin-bottom: 2px;
+    font-style: none;
+    font-weight: italic;
+} 
+#studySummary {
+    font-size: 12px;
+    font-style: italic;
+    margin-top: 0px;
+    margin-bottom: 1px;
+    } 
+#studyDescription {
+    font-size: 12px;
+    font-style: italic;
+    margin-top: 0px;
+    margin-bottom: 1px;
+    } 
+#title {
+    font-size: 20px;
+    color: gray;
+}
+
+#nav_menu {
+  height: 50px;
+  padding: 10px;
+}
+
+#nav_menu_list {
+  list-style: none;
+  margin: 10px;
+  padding: 0;
+}
+#nav_menu_list li {
+  float: left;
+  margin: 10px;
+}
+
+a:link {
+  color: blue;
+  text-decoration: none;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+a:visited { 
+  color: #00FFFF;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+a:hover {
+  text-decoration:underline;
+}
+
+a:active {
+
+}
+
+.coursebutton {
+    /*border: px solid #006;*/
+
+    color: #00FFFF;

@@ -1,0 +1,15 @@
+ul #navigation_menu_list {
+  margin: 20px;
+  padding: 0;
+  list-style: none;
+}
+ul #navigation_menu_list li {
+  display: inline;
+}
+
+ul #navigation_menu_list li a {
+  text-decoration: none;
+  padding: 5px 0;
+  width: 100px;
+  float: left;
+}
