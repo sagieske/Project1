@@ -9,6 +9,7 @@
     <li><a data-transition="slide" href="../../pages/search_parties">Search parties</a> </li>
     <li><a data-transition="slide" href="../../pages/favorite_parties">Browse favorite parties</a> </li>
     <li><a data-transition="slide" href="../../pages/browse_recently">Browse recently viewed</a> </li>
+    <li><a data-transition="slide" href="../../pages/login">Login</a> </li>
   </ul>
   <br>
   

@@ -1,6 +1,6 @@
 <?php 
 
-class Program_model extends CI_model {
+class Parties_model extends CI_model {
 
     public function __construct() {
         $this->load->database();

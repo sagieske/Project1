@@ -13,3 +13,18 @@ ul #navigation_menu_list li a {
   width: 100px;
   float: left;
 }
+ul #content2 {
+  margin: 20px;
+  padding: 15px;
+  list-style: none;
+}
+ul #content2 li {
+  display: inline;
+}
+
+ul #content2 li a {
+  text-decoration: none;
+  padding: 5px 15px;
+  width: 100px;
+  float: left;
+}
