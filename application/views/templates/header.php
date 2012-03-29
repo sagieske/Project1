@@ -19,7 +19,7 @@
   </div>
   <div data-role="content">
     <ul data-role="listview" data-inset="true">
-      <li><a data-transition="slide" href="index">Home</a> </li>
+      <li><a data-transition="slide" href="/">Home</a> </li>
       <li><a data-transition="slide" href="show_all_parties">Browse all parties in Amsterdam</a> </li>
       <li><a data-transition="slide" href="search_parties">Search parties in Amsterdam</a> </li>
       <li><a data-transition="slide" href="favorite_parties">Browse favorite parties</a> </li>
@@ -36,19 +36,19 @@
         </li>
         <li>   
           <?php $this->load->helper('url'); ?> 
-          <a href=<?php $temp = site_url("/pages/show_all_programs"); echo $temp; ?>>
+          <a href=<?php $temp = site_url("/pages/show_all_parties"); echo $temp; ?>>
             Browse all programs
           </a>
         </li>
         <li>   
           <?php $this->load->helper('url'); ?> 
-          <a href=<?php $temp = site_url("/pages/search_programs"); echo $temp; ?>>
+          <a href=<?php $temp = site_url("/pages/search_parties"); echo $temp; ?>>
             Search programs
           </a>
         </li>
         <li>   
           <?php $this->load->helper('url'); ?> 
-          <a href=<?php $temp = site_url("/pages/favorite_programs"); echo $temp; ?>>
+          <a href=<?php $temp = site_url("/pages/favorite_parties"); echo $temp; ?>>
             Browse favorite programs
           </a>
         </li>

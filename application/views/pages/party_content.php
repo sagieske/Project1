@@ -9,7 +9,7 @@
   <span id="studyDescription">Genre: <?php echo $partyItem['partyGenre'] ?></span><br>
   <span id="studyDescription">Description: <?php echo $partyItem['partyDescription'] ?></span><br>
   <br>
-  <form action="../../set_favorite_party" method="get">
+  <form action="../../set_favorite" method="get">
     <input type="hidden" name="partyID" value=<?php echo $partyItem['partyID'] ?> />
     <input type="submit" value="Set as favorite!" />
   </form>

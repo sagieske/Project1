@@ -221,7 +221,7 @@ class Pages extends CI_Controller {
       $this->load->view('templates/footer', $data);
     }
 
-    public function search_all_parties() {
+    public function search_parties() {
       $data['title'] = 'Search for parties';
 
       $this->load->view('templates/header', $data);
@@ -272,7 +272,7 @@ class Pages extends CI_Controller {
     }
     public function set_favorite() {
       $partyID = $_GET['partyID'];
-      $this->parties_model->set_favorite($partyID, session_id());
+      $this->parties_model->set_favorite_party($partyID, session_id());
       $data['title'] = 'Set as favorite';
 
       $this->load->view('templates/header', $data);
@@ -280,7 +280,7 @@ class Pages extends CI_Controller {
       $this->load->view('templates/footer', $data);
     }
     public function favorite_parties() {
-      $data['favoriteParties'] = $this->parties_model->get_favorite(session_id());
+      $data['favoriteParties'] = $this->parties_model->get_favorite_parties(session_id());
       $data['title'] = 'Page with your favorite parties';
 
       $this->load->view('templates/header', $data);

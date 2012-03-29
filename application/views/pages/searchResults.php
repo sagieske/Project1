@@ -4,13 +4,13 @@
 <br>
 
 <ul data-role="listview" data-filter="true">
-<?php foreach ($searchedPrograms as $programItem): ?>
+<?php foreach ($searchedParties as $partyItem): ?>
   <li>
-  <span id="studyName"><?php echo $programItem['programName'] ?> </span><br>
-  <span id="studySummary"><?php echo $programItem['programDescription'] ?></span>
+  <span id="studyName"><?php echo $partyItem['partyName'] ?> </span><br>
+  <span id="studySummary"><?php echo $partyItem['partyDate'] ?></span>
   <br>
-  <form action="set_favorite_program" method="get">
-    <input type="hidden" name="programID" value=<?php echo $programItem['programID'] ?> />
+  <form action="set_favorite_party" method="get">
+    <input type="hidden" name="programID" value=<?php echo $partyItem['partyID'] ?> />
     <input type="submit" value="Set as favorite!" />
   </form>
   </li>

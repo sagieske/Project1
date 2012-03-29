@@ -2,11 +2,11 @@
 Page with favorite programs
 <br>
 
-<?php foreach ($favoritePrograms as $programItem): ?>
-  <strong><?php echo $programItem['programID'] ?> </strong>
+<?php foreach ($favoriteParties as $partyItem): ?>
+  <strong><?php echo $partyItem['partyID'] ?> </strong>
   <br>
-  : <?php echo $programItem['programName'] ?>
+  : <?php echo $partyItem['partyName'] ?>
 <?php endforeach ?><br><br>
-<a href="../../pages">Previous</a>
+<a href="/">Previous</a>
 </div>
 
