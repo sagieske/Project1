@@ -11,8 +11,8 @@ class Parties_model extends CI_model {
       return $query->result_array();
     }
     
-    public function get_party($partyid){
-      $query = $this->db->where('partyID', $partyid);
+    public function get_party($partyID){
+      $query = $this->db->where('partyID', $partyID);
       $query = $this->db->get('partyinfo');
       return $query->result_array();
     }
