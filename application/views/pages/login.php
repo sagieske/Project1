@@ -1,7 +1,14 @@
-<ul id="content2" data-role="listview" data-inset="true">
-<li>
-Page for logging in
+<div id=body>
+Page for signing up
 <br><br>
-Haven't got a account yet? <a data-transition="slide" href="../../pages/signup">Sign up!</a>
-</li>
-</ul>
+<form action="real_login" method="post">
+<label for="_login_username"> Username: </label>
+<input type="text" name="login_username" id="login_username" size="25" value="" required/>
+<label for="login_password"> Password: </label>
+<input type="password" name="login_password" id="login_passwordd" size="25" value="" required/>
+
+<input type="submit" id="login" name="login" value="Login"/>
+</form>
+<br>
+Haven't got an account yet? <a href="signup">Sign up now!</a>
+</div>

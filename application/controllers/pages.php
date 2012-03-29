@@ -3,6 +3,7 @@ session_start();
 
 class Pages extends CI_Controller {
 
+
     public function __construct() {
         parent::__construct();
         $this->load->model('parties_model');
@@ -29,6 +30,94 @@ class Pages extends CI_Controller {
       $this->load->view('pages/login', $data);
       $this->load->view('templates/footer', $data);
     }
+
+    public function try_to_login() {
+      $user = $_GET["username"];
+      $password = $_GET["passwd"];
+      if ($this->real_login($user, $password) == true) {
+        $data['title'] = 'Login succesfull';
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('pages/login_ok', $data);
+        $this->load->view('templates/footer', $data);
+      }
+      else {
+        $data['title'] = 'Login failed';
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('pages/login_failed', $data);
+        $this->load->view('templates/footer', $data);
+
+      }
+    }
+
+    /**
+     * Login and sets session variables
+     *
+     * @access    public
+     * @param    string
+     * @param    string
+     * @return    bool
+     */
+    function real_login() {
+        //Load
+        $this->load->helper('url');
+        $this->load->library('validation');
+      
+        //Check incoming variables
+        $rules['login_username']	= "required|min_length[4]|max_length[32]|alpha_dash";
+        $rules['login_password']	= "required|min_length[4]|max_length[32]|alpha_dash";		
+
+        $this->validation->set_rules($rules);
+
+        $fields['login_username'] = 'Username';
+        $fields['login_password'] = 'Password';
+        
+        $this->validation->set_fields($fields);
+            
+        if ($this->validation->run() == false) {
+          /*
+          //If you are using OBSession you can uncomment these lines
+          $flashdata = array('error' => true, 'error_text' => $this->validation->error_string);
+          $this->session->set_flashdata($flashdata); 
+          $this->session->set_flashdata($_POST);
+          */
+          redirect('/pages/login_ok');	
+        } else {
+          //Create account
+          if($this->simplelogin->login($this->input->post('login_username'), $this->input->post('login_password'))) {
+            /*
+            //If you are using OBSession you can uncomment these lines
+            $flashdata = array('success' => true, 'success_text' => 'Login Successful!');
+            $this->session->set_flashdata($flashdata);
+            */
+            redirect('/pages/');
+          } else {
+            /*
+            //If you are using OBSession you can uncomment these lines
+            $flashdata = array('error' => true, 'error_text' => 'There was a problem logging into the account.');
+            $this->session->set_flashdata($flashdata); 
+            $this->session->set_flashdata($_POST);
+            */
+            return ('/pages/');
+          }			
+      }
+
+    }
+
+    /**
+     * Logout user
+     *
+     * @access    public
+     * @return    void
+     */
+    function logout() {
+        //Put here for PHP 4 users
+        $this->CI =& get_instance();        
+
+        //Destroy session
+        $this->CI->session->unset_userdata();
+    }
     
     public function signup() {
       $data['title'] = "Signup page";
@@ -38,6 +127,26 @@ class Pages extends CI_Controller {
       $this->load->view('templates/footer', $data);
     }
 
+    public function try_to_create() {
+      $user = $_GET["username"];
+      $password = $_GET["passwd"];
+      //Username already exists
+      $auto_login = "true";
+      if ($this->create($user, $password, $auto_login) == false) {
+        $data['title'] = "Signup";
+        $data['user'] = $user;
+        $data['password'] = $password;
+        $this->load->view('templates/header', $data);
+        $this->load->view('pages/signup_failed', $data);
+        $this->load->view('templates/footer', $data);
+      }
+      else {
+        $data['title'] = "Signup";
+        $this->load->view('templates/header', $data);
+        $this->load->view('pages/signup_ok', $data);
+        $this->load->view('templates/footer', $data);
+      }
+    }
     
        /**
      * Create a user account
@@ -48,7 +157,9 @@ class Pages extends CI_Controller {
      * @param    bool
      * @return    bool
      */
-    function create($user = '', $password = '', $auto_login = true) {
+    function create($user, $password, $auto_login = "true") {
+        $this->load->library("simplelogin");
+        $this->load->library("form_validation");
         //Put here for PHP 4 users
         $this->CI =& get_instance();        
 
@@ -59,7 +170,7 @@ class Pages extends CI_Controller {
         
         //Check against user table
         $this->CI->db->where('username', $user); 
-        $query = $this->CI->db->get_where($this->user_table);
+        $query = $this->CI->db->get_where('users');
         
         if ($query->num_rows() > 0) {
             //username already exists
@@ -75,7 +186,7 @@ class Pages extends CI_Controller {
                         'password' => $password
                     );
             $this->CI->db->set($data); 
-            if(!$this->CI->db->insert($this->user_table)) {
+            if(!$this->CI->db->insert('users')) {
                 //There was a problem!
                 return false;                        
             }
