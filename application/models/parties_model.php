@@ -42,14 +42,14 @@ class Parties_model extends CI_model {
       return $temp;
     }
     public function set_favorite_party($partyID, $userID) {
-      $data = array('partyID' => $partyID, 'userID' => $userID);
-      $this->db->insert('favorite_party', $data);
+      $data = array('userID' => $userID, 'partyID' => $partyID);
+      $this->db->insert('favorite_parties', $data);
     }
     public function get_favorite_parties($userID) {
       $this->db->select("*");
       $this->db->from("favorite_parties");
       $temp = $this->db->where('userID', $userID);
-      $query = $this->db->join('partyinfo', 'favorite_parties.partyID = parties.partyID');
+      $query = $this->db->join('partyinfo', 'favorite_parties.partyID = partyinfo.partyID');
       $query = $this->db->get();
       $temp = $query->result_array();
       return $temp;
