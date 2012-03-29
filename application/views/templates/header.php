@@ -19,7 +19,7 @@
   </div>
   <div data-role="content">
     <ul data-role="listview" data-inset="true">
-      <li><a data-transition="slide" href="index">Home</a> </li>
+      <li><a data-transition="slide" href="/">Home</a> </li>
       <li><a data-transition="slide" href="show_all_parties">Browse all parties in Amsterdam</a> </li>
       <li><a data-transition="slide" href="search_parties">Search parties in Amsterdam</a> </li>
       <li><a data-transition="slide" href="favorite_parties">Browse favorite parties</a> </li>
