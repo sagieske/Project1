@@ -36,19 +36,19 @@
         </li>
         <li>   
           <?php $this->load->helper('url'); ?> 
-          <a href=<?php $temp = site_url("/pages/show_all_programs"); echo $temp; ?>>
+          <a href=<?php $temp = site_url("/pages/show_all_parties"); echo $temp; ?>>
             Browse all programs
           </a>
         </li>
         <li>   
           <?php $this->load->helper('url'); ?> 
-          <a href=<?php $temp = site_url("/pages/search_programs"); echo $temp; ?>>
+          <a href=<?php $temp = site_url("/pages/search_parties"); echo $temp; ?>>
             Search programs
           </a>
         </li>
         <li>   
           <?php $this->load->helper('url'); ?> 
-          <a href=<?php $temp = site_url("/pages/favorite_programs"); echo $temp; ?>>
+          <a href=<?php $temp = site_url("/pages/favorite_parties"); echo $temp; ?>>
             Browse favorite programs
           </a>
         </li>

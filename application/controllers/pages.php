@@ -110,7 +110,7 @@ class Pages extends CI_Controller {
       $this->load->view('templates/footer', $data);
     }
 
-    public function search_all_parties() {
+    public function search_parties() {
       $data['title'] = 'Search for parties';
 
       $this->load->view('templates/header', $data);
