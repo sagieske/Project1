@@ -7,19 +7,19 @@ class Parties_model extends CI_model {
     }
 
     public function get_all_parties() {
-      $query = $this->db->get('parties');
+      $query = $this->db->get('partyinfo');
       return $query->result_array();
     }
     
     public function get_party($partyid){
       $query = $this->db->where('partyID', $partyid);
-      $query = $this->db->get('programs');
+      $query = $this->db->get('partyinfo');
       return $query->result_array();
     }
     
     public function get_searched_parties($type, $searchQuery) {
       $query = $this->db->where($type, $searchQuery);
-      $query = $this->db->get('parties');
+      $query = $this->db->get('partyinfo');
       return $query->result_array();
     }
 
@@ -36,7 +36,7 @@ class Parties_model extends CI_model {
       $this->db->select("*");
       $this->db->from("recently_viewed");
       $temp = $this->db->where('userID', $userID);
-      $query = $this->db->join('parties', 'recently_viewed.partyID = parties.partyID');
+      $query = $this->db->join('partyinfo', 'recently_viewed.partyID = parties.partyID');
       $query = $this->db->get();
       $temp = $query->result_array();
       return $temp;
@@ -49,7 +49,7 @@ class Parties_model extends CI_model {
       $this->db->select("*");
       $this->db->from("favorite_parties");
       $temp = $this->db->where('userID', $userID);
-      $query = $this->db->join('parties', 'favorite_parties.partyID = parties.partyID');
+      $query = $this->db->join('partyinfo', 'favorite_parties.partyID = parties.partyID');
       $query = $this->db->get();
       $temp = $query->result_array();
       return $temp;
