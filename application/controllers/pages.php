@@ -29,61 +29,77 @@ class Pages extends CI_Controller {
       $this->load->view('pages/login', $data);
       $this->load->view('templates/footer', $data);
     }
-
+    
     public function signup() {
-      $data['title'] = 'Signup page';
-      
-      //Load
-		$this->load->helper('url');
-		$this->load->library('validation');
-		
-		//Check incoming variables
-		$rules['create_username']	= "required|min_length[4]|max_length[32]|alpha_dash";
-		$rules['create_password']	= "required|min_length[4]|max_length[32]|alpha_dash";		
-
-		$this->validation->set_rules($rules);
-
-		$fields['create_username'] = 'Username';
-		$fields['create_password'] = 'Password';
-		
-		$this->validation->set_fields($fields);
-				
-		if ($this->validation->run() == false) {
-			/*
-			//If you are using OBSession you can uncomment these lines
-			$flashdata = array('error' => true, 'error_text' => $this->validation->error_string);
-			$this->session->set_flashdata($flashdata); 
-			$this->session->set_flashdata($_POST);
-			*/
-			redirect('/example/');			
-		} else {
-			//Create account
-			if($this->simplelogin->create($this->input->post('create_username'), $this->input->post('create_password'))) {
-				/*
-				//If you are using OBSession you can uncomment these lines
-				$flashdata = array('success' => true, 'success_text' => 'Account Creation Successful!');
-				$this->session->set_flashdata($flashdata);
-				*/
-				redirect('/example/');	
-			} else {
-				/*
-				//If you are using OBSession you can uncomment these lines
-				$flashdata = array('error' => true, 'error_text' => 'There was a problem creating the account.');
-				$this->session->set_flashdata($flashdata); 
-				$this->session->set_flashdata($_POST);
-				*/
-				redirect('/example/');			
-			}			
-		}
+      $data['title'] = "Signup page";
 
       $this->load->view('templates/header', $data);
-        $this->load->view('pages/signup', $data);
+      $this->load->view('pages/signup', $data);
       $this->load->view('templates/footer', $data);
     }
+
     
-    public function create() {
+       /**
+     * Create a user account
+     *
+     * @access    public
+     * @param    string
+     * @param    string
+     * @param    bool
+     * @return    bool
+     */
+    function create($user = '', $password = '', $auto_login = true) {
+        //Put here for PHP 4 users
+        $this->CI =& get_instance();        
+
+        //Make sure account info was sent
+        if($user == '' OR $password == '') {
+            return false;
+        }
         
+        //Check against user table
+        $this->CI->db->where('username', $user); 
+        $query = $this->CI->db->get_where($this->user_table);
+        
+        if ($query->num_rows() > 0) {
+            //username already exists
+            return false;
+            
+        } else {
+            //Encrypt password
+            $password = hash("sha512",$password);
+            
+            //Insert account into the database
+            $data = array(
+                        'username' => $user,
+                        'password' => $password
+                    );
+            $this->CI->db->set($data); 
+            if(!$this->CI->db->insert($this->user_table)) {
+                //There was a problem!
+                return false;                        
+            }
+            $user_id = $this->CI->db->insert_id();
+            
+            //Automatically login to created account
+            if($auto_login) {        
+                //Destroy old session
+                $this->CI->session->unset_userdata();
+                
+                //Set session data
+                $this->CI->session->set_userdata(array('id' => $user_id,'username' => $user));
+                
+                //Set logged_in to true
+                $this->CI->session->set_userdata(array('online' => true));            
+            
+            }
+            
+            //Login was successful            
+            return true;
+        }
+
     }
+    
 
 	  public function show_all_parties() {
       $data['allParties'] = $this->parties_model->get_all_parties(); 
