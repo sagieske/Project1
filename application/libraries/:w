@@ -28,6 +28,7 @@ class Simplelogin
 {
 	var $CI;
 	var $user_table = 'users';
+  $this->load->library('session');
 
 	function Simplelogin()
 	{
@@ -47,7 +48,7 @@ class Simplelogin
 	 * @param	bool
 	 * @return	bool
 	 */
-	function create($user = '', $password = '', $auto_login) {
+	function create($user = '', $password = '', $auto_login = true) {
 		//Put here for PHP 4 users
 		$this->CI =& get_instance();		
 
@@ -58,7 +59,7 @@ class Simplelogin
 		
 		//Check against user table
 		$this->CI->db->where('username', $user); 
-		$query = $this->CI->db->get_where($this->user_table);
+		$query = $this->CI->db->getwhere($this->user_table);
 		
 		if ($query->num_rows() > 0) {
 			//username already exists
@@ -66,7 +67,7 @@ class Simplelogin
 			
 		} else {
 			//Encrypt password
-			//$password = md5($password);
+			$password = md5($password);
 			
 			//Insert account into the database
 			$data = array(
@@ -136,10 +137,7 @@ class Simplelogin
 	 * @param	string
 	 * @return	bool
 	 */
-	function login($user, $password) {
-    echo $user;
-    echo "<br><br>";
-    echo $password;
+	function login($user = '', $password = '') {
 		//Put here for PHP 4 users
 		$this->CI =& get_instance();		
 
@@ -151,25 +149,18 @@ class Simplelogin
 		//Check if already logged in
 		if($this->CI->session->userdata('username') == $user) {
 			//User is already logged in.
-      echo "user is already logged in <br>";
 			return false;
 		}
 		
 		//Check against user table
 		$this->CI->db->where('username', $user); 
-		$query = $this->CI->db->get_where($this->user_table);
+		$query = $this->CI->db->getwhere($this->user_table);
 		
 		if ($query->num_rows() > 0) {
 			$row = $query->row_array(); 
 			
 			//Check against password
-      echo "<br>row[password]: ";
-      echo $row['password'];
-      echo "<br>md5(password)" ;
-      echo md5($password);
-			//if(md5($password) != $row['password']) {
-      if ($password != $row['password']) {
-        echo "password does not match <br>";
+			if(md5($password) != $row['password']) {
 				return false;
 			}
 			
@@ -192,7 +183,6 @@ class Simplelogin
 			return true;
 		} else {
 			//No database result found
-      echo "username does not exist <br>";
 			return false;
 		}	
 

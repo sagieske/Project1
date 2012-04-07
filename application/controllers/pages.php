@@ -32,9 +32,12 @@ class Pages extends CI_Controller {
     }
 
     public function try_to_login() {
-      $user = $_GET["username"];
-      $password = $_GET["passwd"];
+      ini_set('display_errors',1);
+      error_reporting(E_ALL);
+      $user = $this->input->post("login_username");
+      $password = $this->input->post("login_password");
       if ($this->real_login($user, $password) == true) {
+      
         $data['title'] = 'Login succesfull';
 
         $this->load->view('templates/header', $data);
@@ -59,39 +62,39 @@ class Pages extends CI_Controller {
      * @param    string
      * @return    bool
      */
-    function real_login() {
+    function real_login($user, $password) {
         //Load
         $this->load->helper('url');
-        $this->load->library('validation');
-      
+        /* 
         //Check incoming variables
         $rules['login_username']	= "required|min_length[4]|max_length[32]|alpha_dash";
         $rules['login_password']	= "required|min_length[4]|max_length[32]|alpha_dash";		
 
-        $this->validation->set_rules($rules);
+        $this->form_validation->set_rules($rules);
 
-        $fields['login_username'] = 'Username';
-        $fields['login_password'] = 'Password';
+        $fields['login_username'] = $user;
+        $fields['login_password'] = $password;
         
-        $this->validation->set_fields($fields);
+        $this->form_validation->set_rules($fields);
+        
             
-        if ($this->validation->run() == false) {
+        if ($this->form_validation->run() == false) {
           /*
           //If you are using OBSession you can uncomment these lines
           $flashdata = array('error' => true, 'error_text' => $this->validation->error_string);
           $this->session->set_flashdata($flashdata); 
           $this->session->set_flashdata($_POST);
           */
-          redirect('/pages/login_ok');	
-        } else {
-          //Create account
-          if($this->simplelogin->login($this->input->post('login_username'), $this->input->post('login_password'))) {
+          //redirect('/pages/home');	
+        //} else { 
+          //Create account */
+          if($this->simplelogin->login($user, $password)) {
             /*
             //If you are using OBSession you can uncomment these lines
             $flashdata = array('success' => true, 'success_text' => 'Login Successful!');
             $this->session->set_flashdata($flashdata);
             */
-            redirect('/pages/');
+            return true;
           } else {
             /*
             //If you are using OBSession you can uncomment these lines
@@ -99,9 +102,9 @@ class Pages extends CI_Controller {
             $this->session->set_flashdata($flashdata); 
             $this->session->set_flashdata($_POST);
             */
-            return ('/pages/');
+            return false;
           }			
-      }
+     // }
 
     }
 
@@ -131,7 +134,7 @@ class Pages extends CI_Controller {
       $user = $_GET["username"];
       $password = $_GET["passwd"];
       //Username already exists
-      $auto_login = "true";
+      $auto_login = "false";
       if ($this->create($user, $password, $auto_login) == false) {
         $data['title'] = "Signup";
         $data['user'] = $user;

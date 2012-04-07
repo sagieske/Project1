@@ -26,7 +26,6 @@
 | 6. Models
 |
 */
-
 /*
 | -------------------------------------------------------------------
 |  Auto-load Packges
@@ -52,7 +51,7 @@ $autoload['packages'] = array();
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
 
-$autoload['libraries'] = array();
+$autoload['libraries'] = array('session', 'Simplelogin', 'form_validation');
 
 
 /*
