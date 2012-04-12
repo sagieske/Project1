@@ -8,24 +8,11 @@ For example.
 Cannot search for 'partyInformation'.
 -->
 <div id=body>
-
-<!-- Javascript script for showing div's if certain radioboxes are checked-->
 <!--
-<script type="text/javascript" defer=defer>
-if(document.getElementById("partyName").checked) {
-  //Show special 'popular parties' link span
-  showSpan('partyNameSpan');
-
-}
-else if(document.getElementById('partyLocation').checked == true) {
-  //Show special 'popular parties' link span
-  //Melkweg/Paradiso/Else textbar
-  showSpan('partyLocationSpan');
-}
-else if(document.getElementById('partyDate').checked == true) {
-  //Show special 'popular parties' link span
-  //Today/tomorrow/else
-}
+  TODO: enable manual search bars (contain an error: searchfield is empty so
+        empty searchresult is returned).
+  TODO: multiple searchoptins combined (party today AND techno genre)
+  TODO: create popular parties page
 -->
 </script>
 Search for specific programs here </br></br>
@@ -36,10 +23,12 @@ Search for specific programs here </br></br>
         <label for="partyName">Party name</label>
         <br>
         <div id="partyNameSpan" style="display:none">
+        &nbsp;&nbsp;&nbsp;&nbsp;<label for="else">Name: </label> <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<input type="text"  name="partyName" id="else"><br>
         &nbsp;&nbsp;&nbsp;&nbsp;Most popular parties? Visit <a href="">Popular parties</a><br>
         </div>
-
-      <input type="radio" name="type" id="partyLocation" value="partyLocation" onclick="document.getElementById('partyLocationSpan').style.display = checked ? 'block' : 'none'" />
+<!-- hulp functie om divs te hidden -->
+      <input type="radio" name="type" id="partyLocation" value="partyLocation" onclick="document.getElementById('partyLocationSpan').style.display == 'none' ? 'block' : 'none'" />
         <label for="partyLocation">Location</label>
         <br>
         <div id="partyLocationSpan" style="display:none">
@@ -54,6 +43,7 @@ Search for specific programs here </br></br>
           &nbsp;&nbsp;&nbsp;<label for="clubUp">Club Up</label><br>
           &nbsp;&nbsp;&nbsp;<input type="radio" name="partyLocation" id="Trouw" value="Trouw">
           &nbsp;&nbsp;&nbsp;<label for="Trouw">Trouw</label><br>
+          <!-- name van radio button moet anders if partyLocation=else, dan text field leeghalen -->
           &nbsp;&nbsp;&nbsp;<input type="radio" name="partyLocation" id="else" value="else">
           &nbsp;&nbsp;&nbsp;<label for="else">Else: </label>
           &nbsp;&nbsp;&nbsp;<input type="text" name="partyLocation" id="else"><br>
@@ -70,14 +60,26 @@ Search for specific programs here </br></br>
           &nbsp;&nbsp;&nbsp;<input type="radio" name="partyDate" id="else" value="else">
           &nbsp;&nbsp;&nbsp;<label for="else">Else (yyyy/mm/dd): <input type="text" name="partyDate" id="else"></label><br>
           <!--&nbsp;&nbsp;&nbsp;<input type="text" name="partyDate" id="else"><br>
-          <!-- else textfield: yyyy/mm/dd -->
+          else textfield: yyyy/mm/dd  -->
         </div>
 
      	<input type="radio" name="type" id="partyGenre" value="partyGenre"` onclick="document.getElementById('partyGenreSpan').style.display = checked ? 'block' : 'none'" />
         <label for="partyGenre">Genre</label>
         <br>
         <div id="partyGenreSpan" style="display:none">
-          Test!<br> <!-- 4 more radioboxes with genres -->
+          &nbsp;&nbsp;&nbsp;<input type="radio" name="partyGenre" id="House" value="House" checked="checked">
+          &nbsp;&nbsp;&nbsp;<label for="House">House</label><br>
+          &nbsp;&nbsp;&nbsp;<input type="radio" name="partyGenre" id="Dubstep" value="Dubstep">
+          &nbsp;&nbsp;&nbsp;<label for="Dubstep">Dubstep</label><br>
+          &nbsp;&nbsp;&nbsp;<input type="radio" name="partyGenre" id="Techno" value="Techno">
+          &nbsp;&nbsp;&nbsp;<label for="Techno">Techno</label><br>
+          &nbsp;&nbsp;&nbsp;<input type="radio" name="partyGenre" id="Pop" value="Pop">
+          &nbsp;&nbsp;&nbsp;<label for="Pop">Pop</label><br>
+          &nbsp;&nbsp;&nbsp;<input type="radio" name="partyGenre" id="90s" value="90s">
+          &nbsp;&nbsp;&nbsp;<label for="90s">90s</label><br>
+          <!--
+          &nbsp;&nbsp;&nbsp;<input type="radio" name="partyGenre" id="else" value="else">
+          &nbsp;&nbsp;&nbsp;<label for="else">Else (yyyy/mm/dd): <input type="text" name="partyDate" id="else"></label><br>-->
         </div>
 </fieldset>
 <input type="submit" value="Search!">

@@ -28,6 +28,14 @@ body {
    font-style: bold;
    text-align: center;
 }
+#loginHeader {
+   padding:4px;
+   border-bottom: 1px solid;
+   border-color: black;
+   font-size: 15px;
+   color: black;
+   text-align: center;
+}
 #body {
    padding:10px;
    padding-bottom:60px;   /* Height of the footer */

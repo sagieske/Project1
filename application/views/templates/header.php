@@ -17,6 +17,16 @@
       <?php echo $title; ?>
     </div>
   </div>
+  <div id="loginHeader">
+  <?php 
+    if ($this->session->userdata("logged_in")){
+      echo "Currently logged in: ".$this->session->userdata("username");
+      ?>
+      <form action="logout"><input type="submit" value="logout" /></form>
+      <?php
+    }
+  ?>  
+  </div>
   <div data-role="content">
     <ul data-role="listview" data-inset="true">
       <li><a data-transition="slide" href="/">Home</a> </li>
@@ -24,5 +34,6 @@
       <li><a data-transition="slide" href="search_parties">Search parties in Amsterdam</a> </li>
       <li><a data-transition="slide" href="favorite_parties">Browse favorite parties</a> </li>
       <li><a data-transition="slide" href="browse_recently">Browse recently viewed</a> </li>
+      <li><a data-transition="slide" href="login">Login</a> </li>
     </ul>
     

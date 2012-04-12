@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class Parties_model extends CI_model {
 
@@ -40,6 +40,10 @@ class Parties_model extends CI_model {
       $query = $this->db->get();
       $temp = $query->result_array();
       return $temp;
+    }
+    public function set_going($username, $partyID) {
+      $data = array('partyID' => $partyID, 'username' => $username);
+      $this->db->insert('going', $data);
     }
     public function set_favorite_party($partyID, $userID) {
       $data = array('userID' => $userID, 'partyID' => $partyID);

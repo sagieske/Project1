@@ -47,7 +47,7 @@ class Simplelogin
 	 * @param	bool
 	 * @return	bool
 	 */
-	function create($user = '', $password = '', $auto_login) {
+  function create($user = '', $password = '', $auto_login = 'false') {
 		//Put here for PHP 4 users
 		$this->CI =& get_instance();		
 

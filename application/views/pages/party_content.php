@@ -21,6 +21,12 @@
     include("rater.php");
     ?>
   </li>
+  <li>
+    Will you be attending this party? <br>
+    <form action="../../going" method="post">
+      <input type="hidden" name="partyID" value=<?php echo $partyItem['partyID'] ?> />
+      <input type="submit" value="Going">
+    </form>
   <br>
   <?php endforeach?>
   <a href="show_all_parties"> Previous </a>
