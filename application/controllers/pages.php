@@ -155,16 +155,12 @@ class Pages extends CI_Controller {
     }
    
     /*
-     * TODO: username must be changed into:
-     * $username = $this->session->userdata('username'); must be uncommented.
-     * Since loginsystem doesn't work properly yet, username is now temporary '1234'.
-     * Checking if user is logged in must be done as well (session->userdata etc.).
+     * TODO: check if going wasn't already set.
      */
 
     public function going() {
       if ($this->session->userdata('logged_in')) {
         $username = $this->session->userdata('username');
-        //$username = "1234";
         $partyID = $_POST['partyID'];
         $this->parties_model->set_going($username, $partyID);
 
@@ -228,13 +224,17 @@ class Pages extends CI_Controller {
     public function show_searched_parties() {
     $type = $_GET["type"];
       //Searchquery is empty, so no dbquery can be done.
-      if ($type = 'partyName') {
+      if ($type == 'partyName') {
         $partyName = $_GET['partyName'];
         $data['searchedParties'] = $this->parties_model->get_searched_parties('partyName', $partyName);
         $data['title'] = 'Search results for '.$partyName;
       }
       else if ($type == 'partyLocation') {
         $locationType = $_GET["partyLocation"];
+        //Manual entry of partyLocation
+        if ($locationType=="else") {
+          $locationType = $_GET['partyLocationManual'];
+        }
         $data['searchedParties'] = $this->parties_model->get_searched_parties('partyLocation', $locationType);
         $data['title'] = 'Search results for '.$locationType;
       }
@@ -261,16 +261,25 @@ class Pages extends CI_Controller {
     
     }
     public function set_favorite() {
-      $partyID = $_GET['partyID'];
-      $this->parties_model->set_favorite_party($partyID, session_id());
-      $data['title'] = 'Set as favorite';
+      if ($this->session->userdata('logged_in')) {
+        $partyID = $_GET['partyID'];
+        $this->parties_model->set_favorite_party($partyID, $this->session->userdata('username'));
+        $data['title'] = 'Set as favorite';
 
-      $this->load->view('templates/header', $data);
-      $this->load->view('pages/favorite_setted', $data);
-      $this->load->view('templates/footer', $data);
+        $this->load->view('templates/header', $data);
+        $this->load->view('pages/favorite_setted', $data);
+        $this->load->view('templates/footer', $data);
+      }
+      else {
+        $data['title'] = 'Login error';
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('pages/login_error', $data);
+        $this->load->view('templates/footer', $data);
+      }
     }
     public function favorite_parties() {
-      $data['favoriteParties'] = $this->parties_model->get_favorite_parties(session_id());
+      $data['favoriteParties'] = $this->parties_model->get_favorite_parties($this->session->userdata('username'));
       $data['title'] = 'Page with your favorite parties';
 
       $this->load->view('templates/header', $data);

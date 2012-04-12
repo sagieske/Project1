@@ -10,8 +10,8 @@
   <span id="partyLocation"><?php echo $partyItem['partyLocation'] ?> </span><br>
   <span id="partySummary"><?php echo $partyItem['partyDate'] ?></span>
   <br>
-  <form action="set_favorite_party" method="get">
-    <input type="hidden" name="programID" value=<?php echo $partyItem['partyID'] ?> />
+  <form action="set_favorite" method="get">
+    <input type="hidden" name="partyID" value=<?php echo $partyItem['partyID'] ?> />
     <input type="submit" value="Set as favorite!" />
   </form>
   </li>

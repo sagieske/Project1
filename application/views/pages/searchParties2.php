@@ -62,15 +62,15 @@ Search for specific programs here </br></br>
         <br>
         <div id="partyLocationDiv" style="display:none">
           &nbsp;&nbsp;&nbsp;<input type="radio" name="partyLocation" id="melkweg" value="melkweg" checked="checked">
-          &nbsp;&nbsp;&nbsp;<label for="melkweg">Melkweg</label><br>
+          &nbsp;&nbsp;&nbsp;<label for="melkweg">Melkweg</label>
           &nbsp;&nbsp;&nbsp;<input type="radio" name="partyLocation" id="paradiso" value="paradiso">
-          &nbsp;&nbsp;&nbsp;<label for="paradiso">Paradiso</label><br>
+          &nbsp;&nbsp;&nbsp;<label for="paradiso">Paradiso</label>
           &nbsp;&nbsp;&nbsp;<input type="radio" name="partyLocation" id="studio80" value="studio80">
-          &nbsp;&nbsp;&nbsp;<label for="studio80">Studio 80</label><br>
+          &nbsp;&nbsp;&nbsp;<label for="studio80">Studio 80</label>
           &nbsp;&nbsp;&nbsp;<input type="radio" name="partyLocation" id="clubUp" value="clubUp">
-          &nbsp;&nbsp;&nbsp;<label for="clubUp">Club Up</label><br>
+          &nbsp;&nbsp;&nbsp;<label for="clubUp">Club Up</label>
           &nbsp;&nbsp;&nbsp;<input type="radio" name="partyLocation" id="Trouw" value="Trouw">
-          &nbsp;&nbsp;&nbsp;<label for="Trouw">Trouw</label><br>
+          &nbsp;&nbsp;&nbsp;<label for="Trouw">Trouw</label>
           &nbsp;&nbsp;&nbsp;<input type="radio" name="partyLocation" id="else" value="else">
           &nbsp;&nbsp;&nbsp;<label for="else">Else: </label>
           &nbsp;&nbsp;&nbsp;<input type="text" name="partyLocationManual" id="else"><br>

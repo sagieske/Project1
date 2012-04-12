@@ -66,7 +66,7 @@ class Simplelogin
 			
 		} else {
 			//Encrypt password
-			//$password = md5($password);
+			$password = md5($password);
 			
 			//Insert account into the database
 			$data = array(
@@ -137,9 +137,6 @@ class Simplelogin
 	 * @return	bool
 	 */
 	function login($user, $password) {
-    echo $user;
-    echo "<br><br>";
-    echo $password;
 		//Put here for PHP 4 users
 		$this->CI =& get_instance();		
 
@@ -163,12 +160,7 @@ class Simplelogin
 			$row = $query->row_array(); 
 			
 			//Check against password
-      echo "<br>row[password]: ";
-      echo $row['password'];
-      echo "<br>md5(password)" ;
-      echo md5($password);
-			//if(md5($password) != $row['password']) {
-      if ($password != $row['password']) {
+			if(md5($password) != $row['password']) {
         echo "<br>password does not match <br>";
 				return false;
 			}

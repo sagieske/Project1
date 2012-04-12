@@ -17,16 +17,17 @@
       <?php echo $title; ?>
     </div>
   </div>
-  <div id="loginHeader">
   <?php 
     if ($this->session->userdata("logged_in")){
-      echo "Currently logged in: ".$this->session->userdata("username");
+    ?>
+    <div id="loginHeader">
+      <?php echo "Currently logged in: ".$this->session->userdata("username");
       ?>
       <form action="logout"><input type="submit" value="logout" /></form>
-      <?php
+      </div>
+    <?php
     }
   ?>  
-  </div>
   <div data-role="content">
     <ul data-role="listview" data-inset="true">
       <li><a data-transition="slide" href="/">Home</a> </li>

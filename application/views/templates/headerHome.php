@@ -17,4 +17,15 @@
       <?php echo $title; ?>
     </div>
   </div>
+  <?php 
+    if ($this->session->userdata("logged_in")){
+    ?>
+    <div id="loginHeader">
+      <?php echo "Currently logged in: ".$this->session->userdata("username");
+      ?>
+      <form action="logout"><input type="submit" value="logout" /></form>
+      </div>
+    <?php
+    }
+  ?> 
   <div data-role="content">
