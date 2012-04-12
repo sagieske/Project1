@@ -151,7 +151,7 @@ class Simplelogin
 		//Check if already logged in
 		if($this->CI->session->userdata('username') == $user) {
 			//User is already logged in.
-      echo "user is already logged in <br>";
+      echo "<br>user is already logged in <br>";
 			return false;
 		}
 		
@@ -169,7 +169,7 @@ class Simplelogin
       echo md5($password);
 			//if(md5($password) != $row['password']) {
       if ($password != $row['password']) {
-        echo "password does not match <br>";
+        echo "<br>password does not match <br>";
 				return false;
 			}
 			

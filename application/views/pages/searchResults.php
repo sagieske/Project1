@@ -6,8 +6,9 @@
 <ul data-role="listview" data-filter="true">
 <?php foreach ($searchedParties as $partyItem): ?>
   <li>
-  <span id="studyName"><?php echo $partyItem['partyName'] ?> </span><br>
-  <span id="studySummary"><?php echo $partyItem['partyDate'] ?></span>
+  <span id="partyName"><?php echo $partyItem['partyName'] ?> </span><br>
+  <span id="partyLocation"><?php echo $partyItem['partyLocation'] ?> </span><br>
+  <span id="partySummary"><?php echo $partyItem['partyDate'] ?></span>
   <br>
   <form action="set_favorite_party" method="get">
     <input type="hidden" name="programID" value=<?php echo $partyItem['partyID'] ?> />

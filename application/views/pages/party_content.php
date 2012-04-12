@@ -14,6 +14,13 @@
     <input type="submit" value="Set as favorite!" />
   </form>
   </li>
+  <li>
+    <?php
+    $rater_id=1;
+    $rater_item_name='Item 1';
+    include("rater.php");
+    ?>
+  </li>
   <br>
   <?php endforeach?>
   <a href="show_all_parties"> Previous </a>

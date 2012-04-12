@@ -18,8 +18,3 @@
     </div>
   </div>
   <div data-role="content">
-    <!--
-    <a href="../../pages">
-    <img id="headerImage" src="/test.jpg" border="0">
-    </a>-->
-    

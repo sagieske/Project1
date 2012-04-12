@@ -257,16 +257,33 @@ class Pages extends CI_Controller {
       }
     public function show_searched_parties() {
     $type = $_GET["type"];
-    $searchQuery = $_GET["searchQuery"];
       //Searchquery is empty, so no dbquery can be done. 
-      if ($searchQuery == NULL) {
-        //TODO create better error showing page
-        show_404();
+      if ($type == 'partyLocation') {
+        $locationType = $_GET["partyLocation"];
+        $data['searchedParties'] = $this->parties_model->get_searched_parties('partyLocation', $locationType);
+        echo "LAKSDJFLKJSDFLJSA;DFJLSJFDL;KAJSF";
+        $data['title'] = 'Search results for '.$locationType;
       }
-      //The type var is the keyword which is searched on (name, summary, etc.)
-      //Can only be one of 4 possibilities.
-      $data['searchedParties'] = $this->parties_model->get_searched_parties($type, $searchQuery);
-      $data['title'] = 'Search results';
+      else if ($type == 'partyDate') {
+        echo "ooooooooooooooooooooh<br>";
+        $dateType = $_GET['partyDate'];
+        echo $dateType;
+        if ($dateType == "today") {
+          $current_date = getdate();
+          echo "today<br>";
+          $date = $current_date['year']."-".$current_date['mon']."-".$current_date['mday'];
+        }
+        else if ($dateType == "tomorrow") {
+          $current_date = getdate();
+          echo "tomorrow<br>";
+          $date = $current_date['year']."-".$current_date['mon']."-".$current_date['mday'];
+        }
+        else {
+          $date = $dateType;
+        }
+        $data['searchedParties'] = $this->parties_model->get_searched_parties('partyDate', $date);
+        $data['title'] = 'Search results for '.$date;
+      }
 
       $this->load->view('templates/header', $data);
       $this->load->view('pages/searchResults', $data);
